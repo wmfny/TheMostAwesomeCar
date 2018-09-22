@@ -38,7 +38,7 @@ def reverse(x):
     GPIO.output(left_backward, GPIO.LOW)
     GPIO.output(right_backward, GPIO.LOW)
 
-def left(x)
+def left(x):
     GPIO.output(left_backward, GPIO.HIGH)
     GPIO.output(right_forward, GPIO.HIGH)
     print("Turning Left")
@@ -46,7 +46,7 @@ def left(x)
     GPIO.output(left_backward, GPIO.LOW)
     GPIO.output(right_forward, GPIO.LOW)
     
-def right(x)
+def right(x):
     GPIO.output(right_backward, GPIO.HIGH)
     GPIO.output(left_forward, GPIO.HIGH)
     print("Turning Left")
