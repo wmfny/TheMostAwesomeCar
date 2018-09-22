@@ -90,7 +90,7 @@ while 1:
     #time.sleep(1)
     #left(0.25)
     #right(0.5)
-    resp = input("warm or not: ")
+    resp = raw_input("warm or not: ")
     if resp == "quit":
         GPIO.cleanup()
         break
