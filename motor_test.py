@@ -91,9 +91,9 @@ while 1:
     #left(0.25)
     #right(0.5)
     resp = input("warm or not: ")
-    if (resp == "quit")
+    if resp == "quit":
         GPIO.cleanup()
         break
-    else
+    else:
         execute(resp)
         #test_pwm()
