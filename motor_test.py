@@ -6,7 +6,7 @@ mode = GPIO.getmode()
 
 GPIO.cleanup()
 
-left_forward = 26
+left_forward = 26   # PIN SETTINGS
 left_backward = 19
 right_forward = 16
 right_backward = 13
@@ -37,24 +37,23 @@ def reverse(x):
     time.sleep(x)
     GPIO.output(left_backward, GPIO.LOW)
     GPIO.output(right_backward, GPIO.LOW)
-    
-def left(x):
-    GPIO.output(right_forward, GPIO.HIGH)
+
+def left(x)
     GPIO.output(left_backward, GPIO.HIGH)
-    print("Turning left")
+    GPIO.output(right_forward, GPIO.HIGH)
+    print("Turning Left")
     time.sleep(x)
-    GPIO.output(right_forward, GPIO.LOW)
     GPIO.output(left_backward, GPIO.LOW)
+    GPIO.output(right_forward, GPIO.LOW)
     
-    
-def right(x):
+def right(x)
     GPIO.output(right_backward, GPIO.HIGH)
     GPIO.output(left_forward, GPIO.HIGH)
-    print("Turning Right")
+    print("Turning Left")
     time.sleep(x)
     GPIO.output(right_backward, GPIO.LOW)
-    GPIO.output(left_forward, GPIO.LOW)
-    
+    GPIO.output(left_forward, GPIO.LOW)    
+
 def test_pwm():
     left = GPIO.PWM(left_forward, pwm_frequency)
     right = GPIO.PWM(right_forward, pwm_frequency)
@@ -76,11 +75,13 @@ def test_pwm():
 
 
 while 1:
-    forward(0.75)
-    reverse(0.75)
-    time.sleep(1)
-    left(0.25)
-    right(0.5)
-    #test_pwm()
+    forward(1)
+    left(2)
+    forward(1)
+    right(2)
+    forward(2)
+    reverse(1)
+    test_pwm()
     GPIO.cleanup()
+    
     break
