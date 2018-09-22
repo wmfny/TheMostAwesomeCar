@@ -6,7 +6,7 @@ mode = GPIO.getmode()
 
 GPIO.cleanup()
 
-left_forward = 26   # PIN SETTINGS
+left_forward = 26
 left_backward = 19
 right_forward = 16
 right_backward = 13
@@ -20,6 +20,10 @@ GPIO.setup(left_backward, GPIO.OUT)
 GPIO.setup(right_forward, GPIO.OUT)
 GPIO.setup(right_backward, GPIO.OUT)
 
+forwardAmount = 1
+reverseAmount = 1
+leftAmount = 0.75
+rightAmount = 0.75
 
 def forward(x):
     GPIO.output(left_forward, GPIO.HIGH)
@@ -37,23 +41,29 @@ def reverse(x):
     time.sleep(x)
     GPIO.output(left_backward, GPIO.LOW)
     GPIO.output(right_backward, GPIO.LOW)
-
+    
 def left(x):
-    GPIO.output(left_backward, GPIO.HIGH)
     GPIO.output(right_forward, GPIO.HIGH)
-    print("Turning Left")
+    GPIO.output(left_backward, GPIO.HIGH)
+    print("Turning left")
     time.sleep(x)
-    GPIO.output(left_backward, GPIO.LOW)
     GPIO.output(right_forward, GPIO.LOW)
+    GPIO.output(left_backward, GPIO.LOW)
     
 def right(x):
     GPIO.output(right_backward, GPIO.HIGH)
     GPIO.output(left_forward, GPIO.HIGH)
-    print("Turning Left")
+    print("Turning Right")
     time.sleep(x)
     GPIO.output(right_backward, GPIO.LOW)
-    GPIO.output(left_forward, GPIO.LOW)    
-
+    GPIO.output(left_forward, GPIO.LOW)
+    
+def execute(response):
+    if response == "warm":
+        forward(forwardAmount)
+    else:
+        left(leftAmount)
+    
 def test_pwm():
     left = GPIO.PWM(left_forward, pwm_frequency)
     right = GPIO.PWM(right_forward, pwm_frequency)
@@ -75,13 +85,15 @@ def test_pwm():
 
 
 while 1:
-    forward(1)
-    left(2)
-    forward(1)
-    right(2)
-    forward(2)
-    reverse(1)
-    test_pwm()
-    GPIO.cleanup()
-    
-    break
+    #forward(0.75)
+    #reverse(0.75)
+    #time.sleep(1)
+    #left(0.25)
+    #right(0.5)
+    resp = input("warm or not: ")
+    if (resp == "quit")
+        GPIO.cleanup()
+        break
+    else
+        execute(resp)
+        #test_pwm()
