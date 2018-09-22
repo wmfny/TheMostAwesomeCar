@@ -78,6 +78,7 @@ def test_pwm():
 while 1:
     forward(0.75)
     reverse(0.75)
+    time.sleep(1)
     left(0.25)
     right(0.5)
     #test_pwm()
